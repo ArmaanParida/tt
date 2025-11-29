@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>School Timetable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at top, #f0f4ff, #dfe4ea);
+      overflow: auto; /* you can scroll on small screens if needed */
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      padding: 1.5rem 1.5rem 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0.75rem;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 1.25rem;
+      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+      color: #555;
+    }
+
+    .table-container {
+      /* no forced scroll, table just shrinks to fit */
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+      border-radius: 12px;
+      overflow: hidden;
+      table-layout: fixed; /* equal column widths */
+      font-size: clamp(0.65rem, 1.1vw, 0.9rem); /* auto scale with screen */
+    }
+
+    thead {
+      background: #1e293b;
+      color: #f9fafb;
+    }
+
+    th,
+    td {
+      padding: 0.6rem 0.3rem;
+      border: 1px solid #e2e8f0;
+      white-space: normal;
+      text-align: center;
+      vertical-align: middle;
+      height: 3.5rem; /* same height for all boxes */
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    tbody tr:hover {
+      background: #e0f2fe;
+    }
+
+    th.period {
+      background: #0f172a;
+    }
+
+    td.day {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+
+    th.recess-sep,
+    td.recess-sep {
+      border-left: 3px solid #0ea5e9;
+    }
+
+    .legend {
+      margin-top: 0.75rem;
+      font-size: clamp(0.65rem, 1vw, 0.8rem);
+      color: #555;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+    }
+
+    .practical {
+      font-size: 0.8em;
+      opacity: 0.9;
+      display: block;
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>School Timetable</h1>
+    <p class="subtitle">Weekly schedule</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="period">Day / Period</th>
+            <th>1st</th>
+            <th>2nd</th>
+            <th>3rd</th>
+            <th>4th</th>
+            <th class="recess-sep">5th</th>
+            <th>6th</th>
+            <th>7th</th>
+            <th>8th</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="day">Monday</td>
+            <td>Test</td>
+            <td>Phy</td>
+            <td>Phy</td>
+            <td>Bio</td>
+            <td class="recess-sep">
+              Chem
+              <span class="practical">(practical)</span>
+            </td>
+            <td>
+              Chem
+              <span class="practical">(practical)</span>
+            </td>
+            <td>Eng</td>
+            <td>Math</td>
+          </tr>
+          <tr>
+            <td class="day">Tuesday</td>
+            <td>Chem</td>
+            <td>Eng</td>
+            <td>Math</td>
+            <td>Math</td>
+            <td class="recess-sep">Math</td>
+            <td>Bio</td>
+            <td>P.E.</td>
+            <td>Phy</td>
+          </tr>
+          <tr>
+            <td class="day">Wednesday</td>
+            <td>Chem</td>
+            <td>Phy</td>
+            <td>Math</td>
+            <td>Math</td>
+            <td class="recess-sep">Math</td>
+            <td>Bio</td>
+            <td>
+              Phy
+              <span class="practical">(practical)</span>
+            </td>
+            <td>
+              Phy
+              <span class="practical">(practical)</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="day">Thursday</td>
+            <td>Bio</td>
+            <td>Phy</td>
+            <td>Chem</td>
+            <td>Math</td>
+            <td class="recess-sep">
+              Bio
+              <span class="practical">(practical)</span>
+            </td>
+            <td>
+              Bio
+              <span class="practical">(practical)</span>
+            </td>
+            <td>P.E.</td>
+            <td>Phy</td>
+          </tr>
+          <tr>
+            <td class="day">Friday</td>
+            <td>Bio</td>
+            <td>Math</td>
+            <td>Chem</td>
+            <td>Phy</td>
+            <td class="recess-sep">P.E.</td>
+            <td>Eng</td>
+            <td>Chem</td>
+            <td>Bio</td>
+          </tr>
+          <tr>
+            <td class="day">Saturday</td>
+            <td>Chem</td>
+            <td>P.E.</td>
+            <td>Phy</td>
+            <td>Bio</td>
+            <td class="recess-sep">Chem</td>
+            <td>Math</td>
+            <td>Eng</td>
+            <td>Bio</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend">
+      <span class="badge">Blue line = Recess break</span>
+      <span class="badge">(practical) = Practical class</span>
+    </div>
+  </div>
+</body>
+</html>
